@@ -924,7 +924,7 @@ function testTerrainorAppr() {
 			geofs.animation.values.isTerrainWarn = 0;
 		}
 
-		if (geofs.animation.values.haglFeet <= 4000 && geofs.animation.values.climbrate <= -10500 || geofs.animation.values.haglFeet <= 3500 && geofs.animation.values.climbrate <= -9000 || geofs.animation.values.haglFeet <= 3000 && geofs.animation.values.climbrate <= -7500 || geofs.animation.values.haglFeet <= 2500 && geofs.animation.values.climbrate <= -6000 || geofs.animation.values.haglFeet <= 2000 && geofs.animation.values.climbrate <= -5000 || geofs.animation.values.haglFeet <= 1500 && geofs.animation.values.climbrate <= -4000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -3000 || geofs.animation.values.haglFeet <= 500 && geofs.animation.values.climbrate <= -2000) {
+		if (geofs.animation.values.haglFeet <= 4000 && geofs.animation.values.climbrate <= -10500 || geofs.animation.values.haglFeet <= 3000 && geofs.animation.values.climbrate <= -7500 || geofs.animation.values.haglFeet <= 2000 && geofs.animation.values.climbrate <= -5000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -3000 || geofs.animation.values.haglFeet <= 500 && geofs.animation.values.climbrate <= -2000) {
 			geofs.animation.values.isPullupWarn = 1;
 		} else {
 			geofs.animation.values.isPullupWarn = 0;
