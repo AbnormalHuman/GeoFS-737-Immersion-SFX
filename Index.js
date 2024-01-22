@@ -883,7 +883,7 @@ if (geofs.animation.values.groundContact == 1) {
   geofs.animation.values.isFlapsWarn = 0;
   return;
 }
-	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.gearPosition == 1 && geofs.animation.values.isPullupWarn == 0 && geofs.animation.values.isTerrainWarn == 0 && geofs.animation.values.groundSpeedKnt <= 150 && geofs.camera.currentModeName === "cockpit") {
+	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.gearPosition == 1 && geofs.animation.values.isPullupWarn == 0 && geofs.animation.values.isTerrainWarn == 0 && geofs.camera.currentModeName === "cockpit") {
 		geofs.animation.values.isGearWarn = 1;
 	} else {
 		geofs.animation.values.isGearWarn = 0;
@@ -897,8 +897,13 @@ if (geofs.animation.values.groundContact == 1) {
 }
 
 function testTerrainorAppr() {
-	if (geofs.animation.values.gearPosition == 0 && geofs.animation.values.haglFeet <= 1000) {
-		if (geofs.animation.values.climbrate <= 0 && geofs.animation.values.climbrate > -3000 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
+if (geofs.animation.values.groundContact == 1) {
+  geofs.animation.values.isGearWarn = 0;
+  geofs.animation.values.isFlapsWarn = 0;
+  return;
+}
+	if (geofs.animation.values.haglFeet <= 1000) {
+		if (geofs.animation.values.climbrate > -3000 && geofs.animation.values.groundSpeedKnt >= 150 && isApprConfig == 0) {
 			geofs.animation.values.isTerrainWarn = 1;
 		} else {
 			geofs.animation.values.isTerrainWarn = 0;
