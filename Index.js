@@ -183,28 +183,6 @@ function bumpCount() {
     }
   }
 }
-//get clap/scream fx
-
-function getScream() {
-  if (geofs.camera.currentModeName == "cockpit" || geofs.camera.currentModeName == "Left wing" || geofs.camera.currentModeName == "Right wing") {
-    if (geofs.animation.values.climbrate <= -6000 && geofs.animation.values.kias > 300) {
-      geofs.animation.values.paxScream = 1;
-    }
-    else {
-      geofs.animation.values.paxScream = 0;
-    }
-  }
-  else {
-    geofs.animation.values.paxScream = 0;
-  }
-}
-
-function getPaxCheer() {
-  if (weather.definition.turbulences <= 0.8) {
-    geofs.animation.values.paxClap = 0;
-  }
-};
-
 //add g force effect to wingflex 
 function resetLift(){
 geofs.animation.values.liftLeftWing = (-geofs.aircraft.instance.parts.leftwing.lift / 50000)+((geofs.animation.values.accZ - 9)/50 + geofs.animation.values.shake / 1000) / (geofs.animation.values.kias / 150);
@@ -918,13 +896,13 @@ if (geofs.animation.values.groundContact == 1) {
 
 function testTerrainorAppr() {
 	if (geofs.animation.values.gearPosition == 0) {
-		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -100 && geofs.animation.values.climbrate >= -5000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
+		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -2500 && geofs.animation.values.climbrate >= -5000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0 || geofs.animation.values.haglFeet >= 500 && geofs.animation.values.climbrate <= -1500 && geofs.animation.values.climbrate >= -5000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
 			geofs.animation.values.isTerrainWarn = 1;
 		} else {
 			geofs.animation.values.isTerrainWarn = 0;
 		}
 
-		if (geofs.animation.values.haglFeet <= 4000 && geofs.animation.values.climbrate <= -10500 || geofs.animation.values.haglFeet <= 3000 && geofs.animation.values.climbrate <= -7500 || geofs.animation.values.haglFeet <= 2000 && geofs.animation.values.climbrate <= -5000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -3000 || geofs.animation.values.haglFeet <= 500 && geofs.animation.values.climbrate <= -2000) {
+		if (geofs.animation.values.haglFeet <= 2500 && geofs.animation.values.climbrate <= -6000 || geofs.animation.values.haglFeet <= 2000 && geofs.animation.values.climbrate <= -5000 || geofs.animation.values.haglFeet <= 1500 && geofs.animation.values.climbrate <= -4000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -3000 || geofs.animation.values.haglFeet <= 500 && geofs.animation.values.climbrate <= -2000) {
 			geofs.animation.values.isPullupWarn = 1;
 		} else {
 			geofs.animation.values.isPullupWarn = 0;
