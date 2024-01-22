@@ -778,7 +778,9 @@ geofs.aircraft.instance.definition.sounds[42].effects = {
 		"value": "trimSound"
 	}
 };
-
+	
+//43 and 44 to be replaced with 2500 ft caallouts.
+	
 geofs.aircraft.instance.definition.sounds[43] = {};
 geofs.aircraft.instance.definition.sounds[43].id = "clap";
 geofs.aircraft.instance.definition.sounds[43].file = "https://138772948-227015667470610340.preview.editmysite.com/uploads/1/3/8/7/138772948/paxclap1.mp3";
@@ -881,13 +883,13 @@ if (geofs.animation.values.groundContact == 1) {
   geofs.animation.values.isFlapsWarn = 0;
   return;
 }
-	if (geofs.animation.values.haglFeet <= 500 && geofs.animation.values.gearPosition == 1 && geofs.animation.values.climbrate < 0 && geofs.animation.values.isPullupWarn == 0) {
+	if (geofs.animation.values.haglFeet <= 500 && geofs.animation.values.gearPosition == 1 && geofs.animation.values.climbrate < 0 && geofs.animation.values.isPullupWarn == 0 && geofs.camera.currentModeName === "cockpit") {
 		geofs.animation.values.isGearWarn = 1;
 	} else {
 		geofs.animation.values.isGearWarn = 0;
 	}
 
-	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.flapsPosition == 0 && geofs.animation.values.climbrate < 0 && geofs.animation.values.isPullupWarn == 0) {
+	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.flapsPosition == 0 && geofs.animation.values.climbrate < 0 && geofs.animation.values.isPullupWarn == 0 && geofs.camera.currentModeName === "cockpit") {
 		geofs.animation.values.isFlapsWarn = 1;
 	} else {
 		geofs.animation.values.isFlapsWarn = 0;
@@ -896,13 +898,13 @@ if (geofs.animation.values.groundContact == 1) {
 
 function testTerrainorAppr() {
 	if (geofs.animation.values.gearPosition == 0) {
-		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -2500 && geofs.animation.values.climbrate >= -5000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0 || geofs.animation.values.haglFeet >= 500 && geofs.animation.values.climbrate <= -1500 && geofs.animation.values.climbrate >= -5000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
+		if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -100 && geofs.animation.values.climbrate >= -3000 && geofs.animation.values.isGearWarn == 0 && geofs.animation.values.isFlapsWarn == 0 && isApprConfig == 0) {
 			geofs.animation.values.isTerrainWarn = 1;
 		} else {
 			geofs.animation.values.isTerrainWarn = 0;
 		}
 
-		if (geofs.animation.values.haglFeet <= 2500 && geofs.animation.values.climbrate <= -6000 || geofs.animation.values.haglFeet <= 2000 && geofs.animation.values.climbrate <= -5000 || geofs.animation.values.haglFeet <= 1500 && geofs.animation.values.climbrate <= -4000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -3000 || geofs.animation.values.haglFeet <= 500 && geofs.animation.values.climbrate <= -2000) {
+		if (geofs.animation.values.haglFeet <= 2000 && geofs.animation.values.climbrate <= -5000 || geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.climbrate <= -3000) {
 			geofs.animation.values.isPullupWarn = 1;
 		} else {
 			geofs.animation.values.isPullupWarn = 0;
@@ -926,31 +928,31 @@ function testForApproach(){
 
 function doRadioAltCall(){
   if (isApprConfig){
-  if (geofs.animation.values.haglFeet <= 1000 + restingPoint && geofs.animation.values.haglFeet >= 900 + restingPoint && geofs.camera.currentModeName === "cockpit"){
+  if (geofs.animation.values.haglFeet <= 1000 + restingPoint && geofs.animation.values.haglFeet >= 950 + restingPoint && geofs.camera.currentModeName === "cockpit"){
     geofs.animation.values.gpws1000 = 1;
   }
   else{
     geofs.animation.values.gpws1000 = 0;
   }
-   if (geofs.animation.values.haglFeet <= 500 + restingPoint && geofs.animation.values.haglFeet >= 400 + restingPoint && geofs.camera.currentModeName === "cockpit"){
+   if (geofs.animation.values.haglFeet <= 500 + restingPoint && geofs.animation.values.haglFeet >= 450 + restingPoint && geofs.camera.currentModeName === "cockpit"){
     geofs.animation.values.gpws500 = 1;
   }
   else{
     geofs.animation.values.gpws500 = 0;
   } 
-   if (geofs.animation.values.haglFeet <= 400 + restingPoint && geofs.animation.values.haglFeet >= 300 + restingPoint && geofs.camera.currentModeName === "cockpit"){
+   if (geofs.animation.values.haglFeet <= 400 + restingPoint && geofs.animation.values.haglFeet >= 350 + restingPoint && geofs.camera.currentModeName === "cockpit"){
     geofs.animation.values.gpws400 = 1;
   }
   else{
     geofs.animation.values.gpws400 = 0;
   } 
-   if (geofs.animation.values.haglFeet <= 300 + restingPoint && geofs.animation.values.haglFeet >= 200 + restingPoint && geofs.camera.currentModeName === "cockpit"){
+   if (geofs.animation.values.haglFeet <= 300 + restingPoint && geofs.animation.values.haglFeet >= 250 + restingPoint && geofs.camera.currentModeName === "cockpit"){
     geofs.animation.values.gpws300 = 1;
   }
   else{
     geofs.animation.values.gpws300 = 0;
   } 
-   if (geofs.animation.values.haglFeet <= 200 + restingPoint && geofs.animation.values.haglFeet >= 100 + restingPoint && geofs.camera.currentModeName === "cockpit"){
+   if (geofs.animation.values.haglFeet <= 200 + restingPoint && geofs.animation.values.haglFeet >= 150 + restingPoint && geofs.camera.currentModeName === "cockpit"){
     geofs.animation.values.gpws200 = 1;
   }
   else{
