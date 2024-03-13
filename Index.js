@@ -897,12 +897,7 @@ if (geofs.animation.values.groundContact == 1) {
 }
 
 function testTerrainorAppr() {
-if (geofs.animation.values.groundContact == 1) {
-  geofs.animation.values.isGearWarn = 0;
-  geofs.animation.values.isFlapsWarn = 0;
-  return;
-}
-	if (geofs.animation.values.haglFeet <= 1000) {
+	if (geofs.animation.values.haglFeet <= 1000 && geofs.animation.values.grounContact == 1) {
 		if (geofs.animation.values.climbrate >= -3000 && geofs.animation.values.groundSpeedKnt >= 150 && isApprConfig == 0 && geofs.camera.currentModeName === "cockpit") {
 			geofs.animation.values.isTerrainWarn = 1;
 		} else {
